@@ -692,6 +692,8 @@ EOD;
                 {$htmlFirstBake_AddArea_reqExcelDL}
             </form>
             <br>
+            {$strLimitRowWarningMsgBody}
+            <br>
 EOD;
                 //無条件で隠す、という設定ではない----
                 }
