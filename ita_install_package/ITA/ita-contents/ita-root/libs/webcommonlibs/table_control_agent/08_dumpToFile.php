@@ -697,7 +697,12 @@
 
                         dev_log("add.before:memory_get_peak_usage(TRUE):".memory_get_peak_usage(TRUE),$intControlDebugLevel02);
                         $objExcelFormatter->workBookCreate();
-                        $objExcelFormatter->editHelpWorkSheetAdd();
+                        if($strOutputDataType === "latest"){
+                            $objExcelFormatter->editHelpWorkSheetAdd();
+                        }
+                        else if($strOutputDataType === "history"){
+                            $objExcelFormatter->editHelpWorkSheetAddHistory();
+                        }
                         $objExcelFormatter->editWorkSheetHeaderCreate();
                         dev_log("sql.before:memory_get_peak_usage(TRUE):".memory_get_peak_usage(TRUE),$intControlDebugLevel02);
 
@@ -755,10 +760,21 @@
                             }
                             //通常モード----
                         }
-                        $objExcelFormatter->editWorkSheetRecordAdd();
-                        $objExcelFormatter->editWorkSheetTailerFix();
-                        // エクセル出力,全件ダウンロードの場合
-                        $objExcelFormatter->ValidationDataWorkSheetAdd(); // カラム列範囲ヴァリデーション
+
+                        if($strOutputDataType === "latest"){
+                            $objExcelFormatter->editWorkSheetRecordAdd();
+                            $objExcelFormatter->editWorkSheetTailerFix();
+                            // エクセル出力,全件ダウンロードの場合
+                            $objExcelFormatter->ValidationDataWorkSheetAdd(); // カラム列範囲ヴァリデーション
+                        }
+                        else if($strOutputDataType === "history"){
+                            $objExcelFormatter->editWorkSheetRecordAdd();
+                            $objExcelFormatter->editWorkSheetTailerFixHistory();
+                            // エクセル出力,全件ダウンロードの場合
+                            $objExcelFormatter->ValidationDataWorkSheetAdd(); // カラム列範囲ヴァリデーション
+                            $objExcelFormatter->editWorkSheetHistoryNonusedData();
+                        }
+
                         dev_log("add.after:memory_get_peak_usage(TRUE):".memory_get_peak_usage(TRUE),$intControlDebugLevel02);
                     }
                     else{
