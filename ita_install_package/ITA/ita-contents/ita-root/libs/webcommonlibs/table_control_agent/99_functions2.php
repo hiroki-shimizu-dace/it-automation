@@ -772,6 +772,14 @@ EOD;
                 <input type="hidden" name="filteroutputfiletype" value="excel">
                 <input type="hidden" name="FORMATTER_ID" value="{$strLinkCSVFormatterId}">
                 <input type="hidden" name="requestuserclass" value="visitor">
+                <input type="hidden" name="datatype" value="latest">
+            </form>
+            <form style="display:inline" name="reqExcelDL" action="{$g['scheme_n_authority']}/default/menu/04_all_dump_excel.php?no={$g['page_dir']}" method="POST" >
+                <input type="submit" value="{$g['objMTS']->getSomeMessage("ITAWDCH-STD-30071")}{$g['objMTS']->getSomeMessage("ITAWDCH-STD-327")}" >
+                <input type="hidden" name="filteroutputfiletype" value="excel">
+                <input type="hidden" name="FORMATTER_ID" value="{$strLinkCSVFormatterId}">
+                <input type="hidden" name="requestuserclass" value="visitor">
+                <input type="hidden" name="datatype" value="history">
             </form>
             <br>
             <br>
