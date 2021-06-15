@@ -397,7 +397,7 @@
                     $RowEditByFileColumn->getOutputType("csv")->setVisible(false);
                     $RowEditByFileColumn->setDbColumn(false);
 
-                    $sql = generateJournalSelectSQL($objTable, $boolBinaryDistinctOnDTiS);
+                    $sql = generateJournalSelectSQL(2,$objTable, $boolBinaryDistinctOnDTiS);
                     // generateJournalSelectSQL呼び出し[Where句に各カラムの名前が記述され、値の部分が置換される前の履歴取得SQLが作成される]----
                 }
 
